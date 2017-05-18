@@ -1,0 +1,73 @@
+@charset "utf-8";
+/* CSS Document */
+
+html {
+	font-size: 10px;
+}
+
+.loginform ul {
+	padding: 0;
+	margin: 0;
+}
+
+.loginform li {
+	display: inline;
+	float: left;
+}
+
+label {
+	display: block;
+	color: #999;
+	font-size: 10px;
+}
+//.cf: before;
+//.cf: after {
+//	clear: both;
+//}
+
+.cf {
+	*zoom: 1;
+}
+
+:focus {
+	outline: 0;
+}
+
+.loginform input:not([type=submit]) {
+	padding: 5px;
+	margin-right: 10px;
+	border: 1px solid rgba(0, 0, 0.3);
+	border-radius: 3px;
+/*	box-shadow: inset 0px 1px 3px 0px rgba(0, 0, 0.1),
+	            0px 1px 0px 0px rgba(250, 250, 250, 0.5);
+*/
+}
+
+
+#login {
+	position: absolute;
+	top: 0px;
+	width: 88%;
+	padding: 18px 6% 60px 6%;
+	margin: 0 0 35px 0;
+	background: rgb(245, 247, 247);
+	border: 1px solid rgba(147, 184, 189, 0.8);
+	box-shadow: 
+        0pt 2px 5px rgba(105, 108, 109,  0.7),  
+        0px 0px 8px 5px rgba(208, 223, 226, 0.4) inset;
+    border-radius: 5px;
+}
+
+#login {
+	z-index: 22;
+}
+
+#wrapper h1 {
+	color: 48px;
+	font-size: rgb(6, 106, 117);
+	padding: 2px 0 10px 0;
+	font-family: 'FranchiseRegular','Arial Narrow',Arial,sans-serif;
+	font-weight: bold;
+	text-align: center;
+	padding-bottom: 30px;
+}

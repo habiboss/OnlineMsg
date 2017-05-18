@@ -1,0 +1,219 @@
+@charset "utf-8";
+* {
+	margin: 0px;
+}
+table{
+	margin: auto;
+	border: 1px solid #eee;
+	font-family: tahoma,arial,sans_serif;
+	font-size: 12px;
+}
+table tr td{
+	padding: 5px 10px;
+}
+.hide{ display: none;}
+.atext,.atext_small{
+	padding: 4px;
+	width: 250px;
+}
+.atext_small{
+	width: 70px;
+}
+
+#cmd_table tr td{
+	border-bottom: 1px solid #eee;
+	height: 30px;
+	padding-left: 30px;
+	background: url(../images/Edit.gif) no-repeat left center;
+	cursor: pointer;
+}
+#cmd_table tr td:hover{
+	text-decoration: underline;
+	background-color: #eee;
+}
+
+.myTable_header{
+	background: #060;
+	color: #eee; font-weight: bold;
+	pointer-events: none;
+}
+#cmd_table tr:first-child td{
+	background: #060;
+	color: #eee; font-weight: bold;
+	pointer-events: none;
+}
+
+.list_table{
+	width: 100%;
+}
+
+.list_table tr td{
+	border-bottom: 1px solid #eee;
+}
+
+.list_table tr:last-child td{
+	border: none;
+}
+
+.list_table tr td:first-child{
+	width: 60%;
+}
+
+#add_course_table tr td{
+	border-bottom: 1px solid #ddd;
+}
+#add_course_table tr:nth-child(3)  td{ padding: 0px;}
+#add_course_table tr:nth-child(5)  td{ padding: 0px;}
+#add_more,#add_more2{
+	margin-top: 10px;
+}
+
+.field_group{
+	padding: 10px;
+
+}
+.jaxLoader{
+	background: url(../images/loading1.gif) no-repeat left center;
+	padding-left: 20px;
+	float: left;
+	height: 20px;
+	display: none;
+}
+.select_course{
+	width: 100%;
+}
+.select_course option{
+	padding:2px 10px;
+}
+.disable{
+	color: #eee;
+}
+
+.hightlight_rename{
+	background: #555;
+	color: #eee;
+}
+
+.remove_item{
+	background: url(../images/cross-script.png) no-repeat left center;
+	padding-right: 12px;
+	float: right;
+}
+#select_course{
+	background: #fcf;
+}
+#Module_list{
+	background: #FFC;
+}
+
+.school_option{ display:none;}
+#show_module{
+	max-height: 200px;
+	overflow: auto;
+	border: 1px solid #eee;
+	padding: 3px;
+}
+
+.module_list_group{
+	float: left;
+	padding-left: 15px;
+	background: url(../images/external-link-brown04-Shapes4FREE.png) no-repeat left center;
+}
+.td_row {
+	height: 30px;
+}
+.module_row{ display:none;}
+
+.searchby input{
+	margin-left: 15px;
+}
+
+.search_input,.inner_s_input{
+	margin: 2px;
+	padding: 5px 0;
+	padding-left: 50px;	width: 450px; 
+}
+.inner_s_input{
+	padding-left: 0px;
+}
+.search_input{
+	font-size: 12px; display: none;
+}
+.search_input select,.search_input input{
+	font-size: 13px; padding: 3px;
+	
+}
+.search_input .sd_input{
+	font-size: 13px; padding: 5px;  margin:0px 10px ;
+	width: 300px;
+}
+.current_search{
+	display: block !important;
+}
+#searchButton{
+	padding: 4px;
+}
+
+.top_panel_menu{
+	float: right;
+}
+.top_panel_menu a{
+	color: #eee;
+	margin-right: 5px;
+}
+
+#search_result table tr td{ 
+border: none;
+	padding: 5px 2px;
+	font-size: 13px;
+	text-indent: 5px;
+}
+
+.sheader,.srow{
+	width: 100%;
+}
+
+.sheader{
+	background: #eee;
+}
+
+.sheader tr td{
+
+	color: #400;
+	font-weight: bold;
+}
+.dmore_details{
+	position: absolute;
+	border: 1px solid #ddd;
+	min-width: 300px; background: #eee;
+	display: none;
+}
+
+.dmore_details p{
+	text-indent: 5px;
+	padding: 4px;
+	border-bottom: 1px solid #ddd;
+}
+
+.dmore_details p span{
+	color: #900; font-weight: bold; font-size: 11px;
+}
+
+
+
+.srow .details{
+	text-decoration: underline;
+	color: #060; cursor: pointer;
+}
+
+
+#search_result .error_text_display{
+ padding: 5px;
+ text-align: center;
+ color: #400; font-size: 14px;
+}
+
+
+
+
+

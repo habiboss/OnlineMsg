@@ -1,0 +1,85 @@
+body {
+font-family: arial,helvetica,sans-serif;
+}
+#container {
+margin: 0 auto;
+width: 100%;
+}
+#header {
+background-color: #abacab;
+padding: 10px;
+}
+#menu {
+float: left;
+width: 100%;
+background-color: #0c0c0c;
+}
+
+#menu ul li {
+list-style-type: none;
+display: inline;
+}
+#menu li a {
+display: block;
+text-decoration: none;
+border-right: 2px solid #FFFFFF;
+padding: 3px 10px;
+float: left;
+color: #FFFFFF;
+}
+#menu li a:hover {
+background-color: #CCCCCC;
+}
+#mainContainer {
+float: left;
+width: 100%;
+}
+#content {
+clear: left;
+float: left;
+width: 65%;
+padding: 20px 0;
+margin: 0 0 0 5%;
+display: inline;
+}
+
+#sidebar {
+float: right;
+width: 30%;
+padding: 20px 0;
+margin: 0;
+display: inline;
+background-color: #CCCCCC;
+}
+#footer {
+clear: right;
+background-color: #CCCCCC;
+padding: 20px;
+}
+table {
+  border-spacing: 0;
+  border-collapse: collapse;
+}
+.table-striped > tbody > tr:nth-child(odd) > td,
+.table-striped > tbody > tr:nth-child(odd) > th {
+  background-color: #f9f9f9;
+}
+.logout{
+ position:fixed;
+ right:10px;
+ top:5px;
+}
+
+#searche{
+               float: right;
+               width:200px;
+               padding:10px;
+               height: 30px;
+            }
+            #submit{
+                float: right;
+                    
+            }
+#tbl{
+     float: left;           
+            }
