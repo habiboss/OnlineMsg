@@ -20,10 +20,10 @@ import org.codehaus.jettison.json.JSONObject;
 public class search extends HttpServlet {
 
     static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";
-    static final String DB_URL = "jdbc:mysql://localhost/onlinemsg";
+    static final String DB_URL = "jdbc:mysql://localhost:3306/onlinemsg";
     //  Database credentials
     static String USER = "root";
-    static String PASS = "Allahis1";
+    static String PASS = "";
     private Statement st; 
     
     

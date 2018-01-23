@@ -59,7 +59,7 @@ public class test extends HttpServlet {
        
         try {
             String salt = "Random$SaltValue#WithSpecialCharacters12@$@4&#%^$*";
-            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/onlinemsg", "root", "Allahis1");
+            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/onlinemsg", "root", "");
             st = con.createStatement();
             ////////////////////////////////Verify unique username
             String verify = "SELECT username from login WHERE username = '"+username+"'";

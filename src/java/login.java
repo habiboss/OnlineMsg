@@ -61,7 +61,7 @@ public class login extends HttpServlet {
         
         try {
             
-            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/onlinemsg", "root", "Allahis1");
+            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/onlinemsg", "root", "");
             st = con.createStatement();
             
              String query = "SELECT id, username, password FROM login WHERE username ='" + username + "' AND password = '" + password + "'";

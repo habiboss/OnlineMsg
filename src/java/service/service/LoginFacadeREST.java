@@ -32,14 +32,14 @@ import service.Login;
 public class LoginFacadeREST extends AbstractFacade<Login> {
     @PersistenceContext(unitName = "messagePU")
     private EntityManager em;
-    
+
   /////////////////////////
     static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";
-    static final String DB_URL = "jdbc:mysql://localhost/onlinemsg";
+    static final String DB_URL = "jdbc:mysql://localhost:3306/onlinemsg";
     //  Database credentials
     static String USER = "root";
-    static String PASS = "Allahis1";
-    
+    static String PASS = "";
+
     public LoginFacadeREST() {
         super(Login.class);
     }
@@ -47,13 +47,13 @@ public class LoginFacadeREST extends AbstractFacade<Login> {
     protected EntityManager getEntityManager() {
         return em;
     }
- /////////////////////////////////////////////SAME MESSAGE   
+ /////////////////////////////////////////////SAME MESSAGE
  @POST
  @Consumes({"text/plain"})
     public String addmessage (String data) {
        Connection conn = null;
-  
-       
+
+
        java.util.Date date = new java.util.Date();
        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy h:mm:ss a");
        String formattedDate = sdf.format(date);
@@ -61,32 +61,32 @@ public class LoginFacadeREST extends AbstractFacade<Login> {
         {
        Statement st = null;
        JSONObject json = new  JSONObject(data);
-        
+
        String user = json.getString("name");
        String msg = json.getString("message");
        String type = json.getString("privacy");
        String toUser = json.getString("toUser");
        Class.forName(JDBC_DRIVER);
-       conn = DriverManager.getConnection(DB_URL,USER,PASS);      
+       conn = DriverManager.getConnection(DB_URL,USER,PASS);
        st = conn.createStatement();
-   
-       
-       
+
+
+
        String query = "INSERT INTO message(msg, user, toUser, type, dates) VALUES('" + msg + "', '" + user + "', '" + toUser + "', '" + type + "', '" + formattedDate + "')";
        st.executeUpdate(query);
-       
+
            st.close();
            conn.close();
-           
+
             return "";
 
         } catch (Exception e)
-        {     
-           
+        {
+
             e.printStackTrace();
             return "Sorry Message was not Saved"+e;
-            
-        }    
+
+        }
   }
  /////////////////////////////////////////////////RETRIEVE MESSAGE
     @GET
@@ -102,12 +102,12 @@ public class LoginFacadeREST extends AbstractFacade<Login> {
                      String details = "";
                      System.out.println(id);
                      String tablebuttom = "</tbody></table>";
-                     
-                      try{ 
+
+                      try{
                          Class.forName(JDBC_DRIVER);
                          conn = DriverManager.getConnection(DB_URL,USER, PASS);
-                        stmt = conn.createStatement();        
-        
+                        stmt = conn.createStatement();
+
                         if("public".equals(id)){
                         sql = "select msg, user, type, dates from message where type ='"+id+"' order by dates DESC";
                         ResultSet rs = stmt.executeQuery(sql);
@@ -117,8 +117,8 @@ public class LoginFacadeREST extends AbstractFacade<Login> {
                         int counter=1;
                         while (rs.next())
                         {
-                         data[i] =  "<tr><td>"+counter+"</td> <td>"+rs.getString("dates")+"</td><td>"+rs.getString("user")+"</td><td>"+rs.getString("msg")+"</td><td>"+rs.getString("type")+"</td></tr>";     
-         
+                         data[i] =  "<tr><td>"+counter+"</td> <td>"+rs.getString("dates")+"</td><td>"+rs.getString("user")+"</td><td>"+rs.getString("msg")+"</td><td>"+rs.getString("type")+"</td></tr>";
+
                          result = result +data[i];     //adding up the string to a single string
                          i++;
                           counter++;
@@ -140,8 +140,8 @@ public class LoginFacadeREST extends AbstractFacade<Login> {
                             {
                            details +=  "<tr class =\"datarow\"> <td>"+counter+"</td> <td  id=\"id\">"+rs.getString("id")+"</td>"+"<td  id=\"id\">"+rs.getString("user")+"</td>"+""+"<td  id=\"id\">"+rs.getString("toUser")+"</td>"+"<td>"+rs.getString("dates")+"</td><td class = \"messagecel\">"+rs.getString("msg")+"</td><td class = \"privacycell\">"+rs.getString("type")+"</td><td>"
                              + "<div class=\"btn-group\" data-toggle=\"buttons\"><label class=\"btn-default\" ><input class = \"public\" type=\"radio\" name=\"options\" "
-                             + "  id=\"option1\">Public</label><label class=\"btn-success\" ><input class = \"private\"type=\"radio\" name=\"options\" id=\"option2\">Private</label></div></td><td><label > <input id = \"editbutton\"  type=\"button\" class=\"edit\" value=\"Update\" name=\"Edit \" /></label></td><td><label > <input id = \"deletebutton\"  type=\"button\" class=\"btn-warning\" value=\"Remove\" name=\"Delete \" /></label></td></tr>";     
-         
+                             + "  id=\"option1\">Public</label><label class=\"btn-success\" ><input class = \"private\"type=\"radio\" name=\"options\" id=\"option2\">Private</label></div></td><td><label > <input id = \"editbutton\"  type=\"button\" class=\"edit\" value=\"Update\" name=\"Edit \" /></label></td><td><label > <input id = \"deletebutton\"  type=\"button\" class=\"btn-warning\" value=\"Remove\" name=\"Delete \" /></label></td></tr>";
+
                             result = result +details;     //adding up the string to a single string
                             i++;
                             counter++;
@@ -150,21 +150,21 @@ public class LoginFacadeREST extends AbstractFacade<Login> {
                              conn.close();
                          stmt.close();
                          rs.close();
-                             }  
+                             }
                            }
-         
+
                             catch (Exception e){e.printStackTrace(); }
                             return tablehead+result+tablebuttom;
     }
     //////////////////////////
-      
+
     @GET
     @Path("/search/{users}")
     @Produces(MediaType.APPLICATION_JSON)
     public String searche(@PathParam("search") String users){
         Connection conn;
-        JSONObject json_role; 
-        JSONObject json = new JSONObject(); 
+        JSONObject json_role;
+        JSONObject json = new JSONObject();
         JSONArray role = new JSONArray();
         String result = "";
         String x = users;
@@ -188,7 +188,7 @@ public class LoginFacadeREST extends AbstractFacade<Login> {
          stmt.close();
          rs.close();
         }catch(Exception e){
-     
+
         }
         return result;
     }
@@ -204,14 +204,14 @@ public class LoginFacadeREST extends AbstractFacade<Login> {
              String msg = json.getString("message");
              String type = json.getString("privacy");
              String currentid = json.getString("currentid");
-             conn = DriverManager.getConnection(DB_URL,USER, PASS);   
+             conn = DriverManager.getConnection(DB_URL,USER, PASS);
              prpsmt = conn.createStatement();
              String Query = "UPDATE message SET type = '"+type+"' where msg = '"+msg+"' and id = '"+currentid+"' ";
              prpsmt.executeUpdate(Query);
              conn.close();
              prpsmt.close();
                }catch (Exception e){e.printStackTrace();}
-           
+
         }
 //////////////////////////////////////////////////////////////
        @PUT
@@ -224,37 +224,37 @@ public class LoginFacadeREST extends AbstractFacade<Login> {
        try
         {
        Statement st = null;
-       JSONObject json = new  JSONObject(data);  
+       JSONObject json = new  JSONObject(data);
        String currentid = json.getString("currentid");
        String msg = json.getString("message");
        String type = json.getString("privacy");
        Class.forName(JDBC_DRIVER);
-       conn = DriverManager.getConnection(DB_URL,USER,PASS);      
+       conn = DriverManager.getConnection(DB_URL,USER,PASS);
        st = conn.createStatement();
        String query = "UPDATE message SET msg = '" + msg + "', type = '" + type + "', dates = '" + formattedDate + "' WHERE id = '"+currentid+"' ";
        st.executeUpdate(query);
        st.close();
-       conn.close();      
+       conn.close();
        return "";
 
         } catch (Exception e)
-        {     
-           
+        {
+
             e.printStackTrace();
             return "Sorry Message was not updated"+e;
-            
-        }    
+
+        }
   }
-      
+
 ////////////////////////////////////////////////////DELETE MESSAGE
         @DELETE
         public String remove( String data) {
-        
+
                  Connection conn;
                  PreparedStatement prestmt;
-                 try{  
+                 try{
                     JSONObject json = new  JSONObject(data);
-                    String msg = json.getString("message"); 
+                    String msg = json.getString("message");
                     Class.forName(JDBC_DRIVER);
                     conn = DriverManager.getConnection(DB_URL,USER, PASS);
                     prestmt = conn.prepareStatement("delete from message where msg= ?");
@@ -264,7 +264,7 @@ public class LoginFacadeREST extends AbstractFacade<Login> {
                     conn.close();
                      return "Message deleted";
                      } catch (Exception e){e.printStackTrace(); return "Message could not delete"+e;}
-   
+
     }
     /////////////////////////
     @GET
@@ -289,68 +289,44 @@ public class LoginFacadeREST extends AbstractFacade<Login> {
         while(pr.next())
         {
             int id = pr.getInt("id");
-            String user = pr.getString("username");      
-            data = user; 
+            String user = pr.getString("username");
+            data = user;
             result = result + data;
             counter++;
-            
+
         }
          conn.close();
          stmt.close();
          pr.close();
-          
+
         }catch(Exception e){
-     
+
         }
         return selectHead+result+selectbutton;
     }
     //////////////////////////////////
-    
+
          public int countrecords (String columnName, String value){
                 Connection conn = null;
                 Statement stmt = null;
                 int i = 0;
-                try{ 
+                try{
                 Class.forName(JDBC_DRIVER);
                 conn = DriverManager.getConnection(DB_URL,USER, PASS);
-                stmt = conn.createStatement();   
+                stmt = conn.createStatement();
                 String sql = "select msg, user, toUser, type, dates from message where " + columnName + "='" + value + "'";
-              
+
                  ResultSet rs = stmt.executeQuery(sql);
-                  while(rs.next()){ i++;} 
+                  while(rs.next()){ i++;}
                   conn.close();
                   stmt.close();
-                 return i;  
+                 return i;
                   }
         catch(Exception e){e.printStackTrace(); return 0;}
-        
+
     }
-        
-        
-    
- 
+
+
+
+
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
